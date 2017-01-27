@@ -1,6 +1,6 @@
 <?php
 /*
-    Template Name: Profil Tds
+    Template Name: Profil SexWorker
 */
 
 get_header();
@@ -8,7 +8,7 @@ get_header();
 ?>
 <body>
     <header class="headerProfil">
-        <h1 role="heading" aria-level="1" class="headerProfil__title"><?php the_title(); ?></h1>
+        <h1 role="heading" aria-level="1" class="headerProfil__title">Sex worker</h1>
         <img src="<?php echo get_template_directory_uri(); ?>/assets/img/profil1.jpg" alt="" class="headerProfil__profil">
         <a class="headerProfil__linkHome" href="<?php echo get_option('home'); ?>/" title="Retour vers la page d'accueil">
             <img class="headerProfil__logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/logoEspace.png" alt="">
@@ -20,7 +20,7 @@ get_header();
             <span></span>
             <span></span>
             <span></span>
-            <h2 role="heading" aria-level="2" class="hidden">Navigation principale</h2>
+            <h2 class="hidden" aria-level="2">Navigation principale</h2>
             <ul class="main-nav__list">
                 <?php foreach (b_get_menu_items( 'main-nav' ) as $navItem) : ?>
                     <li class="main-nav__item"><a href="<?php echo $navItem->url; ?>" class="main-nav__link"><?php echo $navItem->label; ?></a></li>
@@ -31,10 +31,8 @@ get_header();
     </header>
     <section class="main-tds">
         <h2 role="heading" aria-level="2" class="hidden">Contenu principal</h2>
-
-        <?php $posts = new WP_Query( ['category_name' => 'profiltds'] );
+        <?php $posts = new WP_Query( ['category_name' => 'profileSexWorker'] );
         if ( $posts->have_posts() ): while ( $posts->have_posts() ): $posts->the_post(); ?>
-        <a href="<?php the_field('page_link'); ?>" class="main-tds__english">If you are a sex worker, visit this page</a>
         <section class="informations-tds">
         <?php if( have_rows( 'info-point' ) ): ?>
             <?php while ( have_rows( 'info-point') ) : the_row(); ?>
@@ -48,7 +46,7 @@ get_header();
             <?php endwhile; endif; ?>
         <?php endwhile;
         endif; ?>
-        <a class="main-tds__link" href="<?php echo get_option('home'); ?>/">Choisissez un autre profil</a> 
+        <a class="main-tds__link" href="<?php echo get_option('home'); ?>/">Choose another profile</a> 
         </section>  
         <?php endwhile; endif; ?>  
 <?php get_footer();

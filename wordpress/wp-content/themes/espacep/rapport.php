@@ -1,6 +1,6 @@
 <?php
 /*
-    Template Name: Manifeste
+    Template Name: Rapport
 */
 
 get_header();
@@ -30,8 +30,7 @@ get_header();
         </nav>
     </header>
     <section class="main-manifeste">
-        <a class="main-manifeste__button" href="#<?php the_title(); ?>" title="Adhérez à notre manifeste">Adhérez à notre manifeste</a>
-        <?php $posts = new WP_Query( ['category_name' => 'manifeste'] );
+        <?php $posts = new WP_Query( ['category_name' => 'rapport'] );
         if ( $posts->have_posts() ): while ( $posts->have_posts() ): $posts->the_post(); ?>
         <div class="manifeste-point">
             <h2 role="heading" aria-level="2" class="manifeste-point__title"><?php the_field( 'title_intro' ); ?></h2>
@@ -45,19 +44,11 @@ get_header();
                             <?php while ( have_rows( 'container-text-point' ) ) : the_row(); ?>
                                 <h3 role="heading" aria-level="3" class="manifeste-point__subtitle"><?php the_sub_field( 'manifeste-point-subtitle' ) ;?></h3>
                                 <?php the_sub_field( 'manifeste-point-text' ) ?>
-                        <?php endwhile; endif; ?>
+                            <?php endwhile; endif; ?>
                 </div>
         <?php endwhile; endif; ?>
         <?php endwhile; 
     endif; ?> 
-        <div class="manifeste-point" id="<?php the_title(); ?>">
-            <h2 role="heading" aria-level="2" class="manifeste-point__title">Adhérer à notre manifeste :</h2>
-            <h3 role="heading" aria-level="3" class="manifeste-point__subtitle">Pour adhérer à notre manifeste, merci de remplir ce formulaire</h3>
-            <small class="manifeste-point__small">Votre signature ne sera visible pour les autres qu'après validation par nos soins.</small>
-            <div class="join">
-                <h4 role="heading" aria-level="4" class="join__title"><span class="join__span">Adhérez</span> à notre manifeste</h4>
-                    <?php echo do_shortcode( '[contact-form-7 id="158" title="Join"]' ); ?>
-            </div>
         </div> 
 
 <?php get_footer();
