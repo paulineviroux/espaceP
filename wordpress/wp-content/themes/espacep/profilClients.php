@@ -38,18 +38,18 @@ get_header();
         <?php if( have_rows( 'info-point' ) ): ?>
             <?php while ( have_rows( 'info-point') ) : the_row(); ?>
             <h3 role="heading" aria-level="3" class="informations-tds__title"><?php the_sub_field( 'info-point-title' ) ;?></h3>
-            <?php if( have_rows( 'info-subpoint' ) ): ?>
+                <?php if( have_rows( 'info-subpoint' ) ): ?>
                 <?php while ( have_rows( 'info-subpoint' ) ) : the_row(); ?>
-            <div class="tds-point">
-                <h4 role="heading" aria-level="4" class="tds-point__title"><?php the_sub_field( 'info-point-subtitle' ) ;?></h4>
-                <?php the_sub_field( 'info-point-text' ) ;?>
-            </div>
-            <?php endwhile; endif; ?>
+                    <div class="tds-point">
+                        <h4 role="heading" aria-level="4" class="tds-point__title"><?php the_sub_field( 'info-point-subtitle' ) ;?></h4>
+                        <?php the_sub_field( 'info-point-text' ) ;?>
+                    </div>
+                <?php endwhile; endif; ?>
         <?php endwhile;
         endif; ?>
         <a class="main-tds__link" href="<?php echo get_option('home'); ?>/">Choisissez un autre profil</a> 
         </section>  
         <?php endwhile; endif; ?> 
     
-
+        <div id='btt' onclick='scr_top.init()'></div>
 <?php get_footer();

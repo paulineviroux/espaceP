@@ -26,21 +26,32 @@ get_header();
                     <li class="main-nav__item"><a href="<?php echo $navItem->url; ?>" class="main-nav__link"><?php echo $navItem->label; ?></a></li>
                 <?php endforeach; ?>
             </ul>
-        </div>
+        </div> 
         </nav>
     </header>
     <section class="main-partenaire">
         <h2 role="heading" aria-level="2" class="main-partenaire__title">L'esapce P... est soutenu par :</h2>
-        <?php $posts = new WP_Query( ['category_name' => 'logo'] );
+        <div class="main-partenaire__columns">
+            <?php $posts = new WP_Query( ['post_type' => 'partner'] );
                 if ( $posts->have_posts() ): while ( $posts->have_posts() ): $posts->the_post(); ?>
-        <figure class="main-partenaire__partenaire">
-            <a href="<?php the_field( 'partenaire_link');?>">
-                <img class="main-partenaire__logo" src="<?php the_field( 'logo-img');?>" alt="" width="200" height="200">
+        
+            <figure class="main-partenaire__partenaire">
+                <a href="<?php the_field( 'partenaire_link');?>">
+                <div class="main-partenaire__div">
+                    <img class="main-partenaire__logo" src="<?php the_field( 'logo_img');?>" alt="" width="150" height="150">
+                </div>
+                </a>
                 <figcaption class="main-partenaire__caption"><?php the_title(); ?></figcaption>
-            </a>
-        </figure>
-        <?php endwhile;
-    endif; ?>
+                <?php the_field( 'description');?>
+                <a class="main-partenaire__link" href="<?php the_field( 'partenaire_link');?>" title="Visiter le site de <?php the_title(); ?>">Visiter leur site</a>
+            </figure>
+            
+            <?php endwhile;
+            endif; ?>
+
+        </div>
+
+        <p class="main-partenaire__invite">Si vous souhaitez également devenir un de nos partenaires, n'hésitez pas a nous contacter à l'adresse suivante : <a href="mailto:espacepliege@gmail.com" class="main-partenaire__email">espacepliege@gmail.com</a></p>
 
 <?php get_footer();
         

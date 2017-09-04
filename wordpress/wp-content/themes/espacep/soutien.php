@@ -32,14 +32,37 @@ get_header();
     <section class="main-soutien">
         <h2 role="heading" aria-level="2" class="main-soutien__title">Abonnez-vous à notre magazine espace P...</h2>
         <p class="main-soutien__presentation">Vous pouvez vous abonner pour les quatres prochains numéros d'Espace P... Magazine.</p>
-        <p class="main-soutien__presentation">Nous vous invitons à nous envoyer un mail avec vos coordonnées. Concernant le payement, celui-ci se fait par virement sur le numéro de compte suivant : BEXX XXXX XXXX XXXX</p>
-        <h3 role="heading" aria-level="3" class="main-soutien__secondTitle">Deux formules :</h3>
-            <?php the_field( 'formule1' ); ?>
-            <?php the_field( 'formule2' ); ?>
-        <div class="subscribe">
-            <h3 role="heading" aria-level="3" class="subscribe__title"><span class="subscribe__span">Abonnez-vous</span>à notre magazine</h3>
-                <?php echo do_shortcode( '[contact-form-7 id="73" title="Don"]' ); ?>
+        <p class="main-soutien__presentation">Nous vous invitons a inscrire vos coordonnées directement en communication lors du payement. Celui-ci se fait par virement sur le numéro de compte suivant&nbsp;: <span class="main-soutien__span">BE07 3400 0707 0707</span>.</p>
+        <h3 role="heading" aria-level="3" class="main-soutien__secondTitle">Deux formules vous sont proposées&nbsp;:</h3>
+        <div class="main-soutien__formules">
+            <div class="main-soutien__formule">
+                <div class="main-soutien__left">
+                    <p class="main-soutien__montant">20€</p>
+                </div>
+                <div class="main-soutien__right">
+                    <p class="main-soutien__abonnement">Abonnement <span class="main-soutien__strong">normal</span></p>
+                    <ul class="main-soutien__list">
+                        <li class="main-soutien__item">4 numéros du magazine Espace P...</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-soutien__formule">
+                <div class="main-soutien__left">
+                    <p class="main-soutien__montant">50€</p>
+                </div>
+                <div class="main-soutien__right">
+                <p class="main-soutien__abonnement">Abonnement de <span class="main-soutien__strong">soutien</span></p>
+                    <ul class="main-soutien__list">
+                        <li class="main-soutien__item">4 numéros du magazine Espace P...</li>
+                        <li class="main-soutien__item">30€ de don</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+        <!-- <div class="subscribe">
+            <h3 role="heading" aria-level="3" class="subscribe__title"><span class="subscribe__span">Abonnez-vous</span>à notre magazine</h3>
+                
+        </div> -->
 
 
 <?php get_footer();

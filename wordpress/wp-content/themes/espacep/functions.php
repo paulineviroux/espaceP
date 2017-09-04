@@ -23,13 +23,41 @@ register_post_type( 'project', [
             'singular_name' => __('Antenne', 'b'),
             'add_new' => __('Ajouter une nouvelle antenne', 'b')
         ],
-        'description' => __('Différents antennes de l\'espace p', 'b'),
+        'description' => __('Différentes antennes de l\'espace p', 'b'),
         'public' => true,
         'menu_position' => 5,
         'menu_icon' => 'dashicons-editor-video',
         'supports' => ['title', 'editor', 'thumbnail'],
         'has_archive' => true
     ] );
+
+register_post_type( 'partner', [
+        'label' => __('Partenaires', 'p'),
+        'labels' => [
+            'singular_name' => __('Partenaire', 'p'),
+            'add_new' => __('Ajouter un nouveau partenaire', 'p')
+        ],
+        'description' => __('Différents partenaires de l\'esapce p...', 'p'),
+        'public' => true,
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-admin-users',
+        'supports' => ['title', 'editor', 'thumbnail'],
+        'has_archive' => true
+    ] );
+
+// register_post_type( 'profil', [
+//         'label' => __('Profils', 'p'),
+//         'labels' => [
+//             'singular_name' => __('Profil', 'p'),
+//             'add_new' => __('Ajouter le contenu de ce profil', 'p')
+//         ],
+//         'description' => __('Contenu des profils', 'p'),
+//         'public' => true,
+//         'menu_position' => 5,
+//         'menu_icon' => 'dashicons-admin-users',
+//         'supports' => ['title', 'editor', 'thumbnail'],
+//         'has_archive' => true
+//     ] );
 
 register_nav_menus( array(
     'main-nav' => 'Menu principal, affiché dans le header.',

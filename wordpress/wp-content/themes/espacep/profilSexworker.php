@@ -49,4 +49,5 @@ get_header();
         <a class="main-tds__link" href="<?php echo get_option('home'); ?>/">Choose another profile</a> 
         </section>  
         <?php endwhile; endif; ?>  
+        <div id='btt' onclick='scr_top.init()'></div>
 <?php get_footer();

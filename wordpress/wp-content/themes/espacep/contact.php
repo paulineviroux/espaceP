@@ -44,18 +44,28 @@ get_header();
         <?php $posts = new WP_Query( ['post_type' => 'project'] );
             if ( $posts->have_posts() ): while ( $posts->have_posts() ): $posts->the_post(); ?>
         <section class="town">
-            <div class="town__container visible" id="<?php the_field('name'); ?>_target">
-                <h3 role="heading" aria-level="3" class="town__title">Antenne <?php the_title(); ?></h3>
+            <div class="town__container hidden" id="<?php the_field('name'); ?>_target">
+            <div class="town__containerLeft">
+              <h3 role="heading" aria-level="3" class="town__title">Antenne <?php the_title(); ?></h3>
                 <?php the_field( 'antenne_presentation' ); ?>
-                <iframe class="town__map" src="<?php the_field( 'antenne_map' ); ?>" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                <address class="town__address"><?php the_field( 'antenne_adresse' ); ?></address>
-                <a href="mailto:<?php the_field( 'antenne_mail' ); ?>" class="town__mail"><?php the_field( 'antenne_mail' ); ?></a>
-                <a href="tel:<?php the_field( 'antenne_tel' ); ?>" class="town__phone"><?php the_field( 'antenne_tel' ); ?></a>
-                <?php the_field( 'antenne_horaire' ); ?>
                 <div class="townContactForm">
                     <h4 role="heading" aria-level="4" class="townContactForm__title">Nous contacter</h4>
                     <?php echo do_shortcode( '[contact-form-7 id="275" title="Contact"]' ); ?>
                 </div>
+            </div>
+            <div class="town__containerRight">
+              <iframe class="town__map" src="<?php the_field( 'antenne_map' ); ?>" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <div class="town__address">
+                  <address><?php the_field( 'antenne_adresse__part1' ); ?></address>
+                  <address><?php the_field( 'antenne_adresse__part2' ); ?></address>
+                </div>
+                
+                <a href="mailto:<?php the_field( 'antenne_mail' ); ?>" class="town__mail"><?php the_field( 'antenne_mail' ); ?></a>
+                <a href="tel:<?php the_field( 'antenne_tel' ); ?>" class="town__phone"><?php the_field( 'antenne_tel' ); ?></a>
+                <?php the_field( 'antenne_horaire' ); ?>
+            </div>    
+                
+                
             </div> 
         </section>
 
@@ -67,12 +77,20 @@ get_header();
         var targets = document.querySelectorAll('.town__container');
         var i = 0, tailleLiens = liens.length, tailleTargets = targets.length;
 
+        targets[0].classList.remove( 'hidden');
+        targets[0].classList.add( 'visible');
+
         while(i < tailleLiens){
           liens[i].addEventListener('click', handleToggle);
           i++;
         } 
 
-        function doToggle(elt){
+
+        function doToggle(elt, link){
+          if(link.dataset.selected === 'true' ){
+            return;
+          }  
+          liens.forEach((lien)=>lien.dataset.selected = false);
           var c = 0, target = document.getElementById(elt);
           while(c < tailleTargets){
             if(target === targets[c]){
@@ -83,14 +101,16 @@ get_header();
             }
           c++;  
           }
+          link.dataset.selected = true;  
         }
+
 
         function handleToggle(e){
           e.preventDefault();
           var targetNameParts = e.target.id.split('_');
           var targetNamePrefix = targetNameParts[0];
           var targetName = targetNamePrefix+'_target';
-          doToggle(targetName);
+          doToggle(targetName, e.target);
         }
 
     </script>

@@ -21,8 +21,8 @@
     "gulp-imagemin": "^3.0.3",
     "gulp-newer": "^1.2.0",
     "gulp-preprocess": "^2.0.0",
-    "gulp-sass": "^2.3.2",
     "gulp-size": "^2.1.0",
-    "imacss": "^1.0.0"
+    "imacss": "^1.0.0",
+    "node-sass": "^4.5.3"
   }
 }

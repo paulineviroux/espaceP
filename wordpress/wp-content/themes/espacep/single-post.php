@@ -32,9 +32,14 @@ get_header();
         <h2 role="heading" aria-level="2" class="hidden">Actualité</h2>
         <article class="mainActu__container">
             <h3 role="heading" aria-level="3" class="mainActu__title"><?php the_title(); ?></h3>
-            <p class="mainActu__date">Publié le <date><?php the_field( 'date_actu' ); ?></date></p>
-            <?php the_field( 'text_actu' ); ?>
+            <p class="mainActu__date">Publié le <date><?php the_field( 'date_actu' ); ?></date> par <?php the_field( 'author_actu' ); ?></p>
+            <?php if( have_rows( 'container_actu') ): ?>
+                <?php while ( have_rows( 'container_actu') ) : the_row(); ?>
+                <h4 role="heading" aria-level="4" class="mainActu__subtitle"><?php the_sub_field( 'title_actu' ); ?></h4>
+                <?php the_sub_field( 'text_actu' ); ?>
+            <?php endwhile; endif; ?>    
         </article>
-    </section>
+        <a class="mainActu__more" href="<?php bloginfo('url'); ?>/archive-actualites/" title="Voir toutes les actualités">Toutes les actualités</a>
+    
 
 <?php get_footer();

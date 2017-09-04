@@ -1,16 +1,5 @@
 @charset "UTF-8";
-/* EspaceP 
- *
- * coded by Pauline Viroux
- */
-/* Espace P
- *
- * coded by Pauline Viroux
- */
-/* Espace P
- *
- * coded by Pauline Viroux
- */
+
 /* Espace P
  *
  * coded by Pauline Viroux
@@ -192,7 +181,7 @@ body {
     display: inline-block;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 3rem;
+    font-size: 1rem;
     margin-top: 8rem;
     position: relative; }
   .header__specification {
@@ -308,9 +297,21 @@ body {
     width: 250px;
     display: block;
     text-align: center;
+    position: relative;
     margin-top: 3rem;
     line-height: 1.7;
     text-shadow: 1px 1px 2px black; }
+  .main .nav-profil__link:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0%;
+    border-bottom: 2px;
+    transition: 0.5s;
+  }
+  .main .nav-profil__link:hover:after{
+    width: 100%;
+  }   
   .main .nav-profil__img {
     width: 250px;
     border: 3px solid #fff;

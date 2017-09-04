@@ -39,13 +39,19 @@ get_header();
         <section class="lastActu">
             <h3 role="heading" aria-level="3" class="lastActu__title">Actualité</h3>
             <article class="articleActu">
-            <?php 
-                $posts = new WP_Query( ['category_name' => 'actualites', 'posts_per_page' => 1] );
-                if ( $posts->have_posts() ): while ( $posts->have_posts() ): $posts->the_post(); 
-            ?>
-                <h4 role="heading" aria-level="4" class="articleActu__title"><?php the_title(); ?></h4>
-                <p class="articleActu__date">Publié le <date><?php the_field( 'date_actu' ); ?></date></p>
-                <?php the_field( 'text_actu' ); ?>
+                <?php 
+                    $posts = new WP_Query( ['category_name' => 'actualites', 'posts_per_page' => 1] );
+                    if ( $posts->have_posts() ): while ( $posts->have_posts() ): $posts->the_post(); 
+                ?>
+
+                <h4 role="heading" aria-level="3" class="articleActu__title"><?php the_title(); ?></h4>
+                <p class="articleActu__date">Publié le <date><?php the_field( 'date_actu' ); ?></date> par <?php the_field( 'author_actu' ); ?></p>
+                <?php if( have_rows( 'container_actu') ): ?>
+                    <?php while ( have_rows( 'container_actu') ) : the_row(); ?>
+                    <h5 ole="heading" aria-level="3" class="articleActu__subtitle"><?php the_sub_field( 'title_actu' ); ?></h5>
+                    <?php the_sub_field( 'text_actu' ); ?>
+                <?php endwhile; endif; ?>    
+
             </article>
             <?php endwhile;
     endif; ?>

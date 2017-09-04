@@ -30,16 +30,17 @@ get_header();
     </header>
     <section class="mainArchive">
     <h2 role="heading" aria-level="2" class="hidden">Contenu principal</h2>
-        <?php $posts = new WP_Query( ['category_name' => 'actualites', 'posts_per_page' => 3] );
-        if ( $posts->have_posts() ): while ( $posts->have_posts() ): $posts->the_post(); ?>
+        <?php $paged = get_query_var('paged') ? get_query_var('paged') : 1;?>
+          <?php $args = array( 'category_name' => 'actualites', 'posts_per_page' => 2,'paged' => $paged );
+          $loop = new WP_Query( $args );
+          while ( $loop->have_posts() ) : $loop->the_post();?>
             <div class="mainArchive__container">
                 <h3 role="heading" aria-level="3" class="mainArchive__title"><?php the_title(); ?></h3>
-                <p class="mainArchive__date">Publié le <date><?php the_field( 'date_actu' ); ?></date></p>
+                <p class="mainArchive__date">Publié le <date><?php the_field( 'date_actu' ); ?> par <?php the_field( 'author_actu' ); ?></date></p>
                 <?php the_field( 'intro_actu' ); ?>
-                <a href="<?php the_permalink(); ?>" class="mainArchive__link" title="Lire la suite de l'article">Lire la suite...</a>
+                <a href="<?php the_permalink(); ?>" class="mainArchive__link" title="Lire la suite de l'article">Lire la suite<span class="hidden"> de l'article "<?php the_title(); ?>"</span>...</a>
             </div>
-        <?php endwhile;
-        endif; ?>
-    </section>
+        <?php endwhile; ?>
+        <?php wp_pagenavi( array( 'query' => $loop ) ); ?>
 
 <?php get_footer();
